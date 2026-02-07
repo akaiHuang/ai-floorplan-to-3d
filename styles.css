@@ -1,0 +1,390 @@
+/* 全局樣式 */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 表單和輸入區域 */
+#uploadForm {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#fileInput {
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 80%;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* 3D 容器和訊息區域 */
+#threejsContainer {
+    width: 100%;
+    height: 600px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+#loadingMessage, #errorMessage {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    text-align: center;
+    display: none;
+}
+
+#loadingMessage {
+    background-color: #e7f3fe;
+    color: #0c5460;
+}
+
+#errorMessage {
+    background-color: #f8d7da;
+    color: #721c24;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.info-box {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    margin: 10px 0;
+}
+
+.save-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.save-button:hover {
+    opacity: 1;
+    background-color: #0069d9;
+}
+
+/* 歷史記錄面板 */
+.history-panel {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.history-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.history-list {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+.history-item {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.history-item:hover {
+    background-color: #f0f0f0;
+}
+
+.history-item.selected {
+    background-color: #e0f7fa;
+}
+
+.history-item .timestamp {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* 分析狀態指示器 */
+.analysis-status {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 30px 50px;
+    border-radius: 10px;
+    z-index: 10000;
+    display: none;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.analysis-status .spinner {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+.analysis-status p {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+#analysisProgress {
+    font-weight: bold;
+    color: #4fc3f7;
+}
+
+/* AI 指令區域樣式 */
+.ai-command-panel {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.command-input-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#commandInput {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+
+#executeCommand {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 0 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#executeCommand:hover {
+    background-color: #0069d9;
+}
+
+.command-history {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+}
+
+.command-entry {
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.user-command {
+    color: #0056b3;
+    font-weight: bold;
+}
+
+.ai-response {
+    color: #28a745;
+}
+
+.error-message {
+    color: #dc3545;
+}
+
+/* AI 調整中提示樣式 */
+#ai-loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 25px 40px;
+    border-radius: 10px;
+    z-index: 10000;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    font-family: Arial, sans-serif;
+    display: none;
+}
+
+#ai-loading-indicator .spinner {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 15px;
+}
+
+#ai-loading-indicator .text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 屬性面板樣式 */
+.properties-panel {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    transition: all 0.3s ease;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.panel-header {
+    font-weight: bold;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-minimize-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 16px;
+    padding: 0 6px;
+    color: #555;
+}
+
+.panel-minimize-btn:hover {
+    color: #000;
+}
+
+.properties-panel.minimized {
+    width: auto;
+    height: auto;
+    padding: 5px;
+}
+
+.properties-panel.minimized .panel-content {
+    display: none;
+}
+
+.properties-panel.minimized .panel-header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.property-group {
+    margin-bottom: 10px;
+}
+
+.property-label {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.property-value {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.property-value input[type="number"] {
+    width: 60px;
+}
+
+.property-actions {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.apply-properties-btn, .batch-properties-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.apply-properties-btn:hover, .batch-properties-btn:hover {
+    background-color: #45a049;
+}
+
+/* 旋轉動畫 */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

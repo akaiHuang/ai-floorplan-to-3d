@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 平面圖分析 - 測試頁面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #threejsContainer {
+            width: 100%;
+            height: 600px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .test-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        #errorMessage {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>3D 平面圖渲染測試頁面</h1>
+        
+        <div class="test-section">
+            <h2>測試 3D 渲染功能</h2>
+            <p>點擊下面的按鈕，使用預設的測試數據渲染 3D 模型：</p>
+            <button onclick="testRender()">渲染測試數據</button>
+        </div>
+        
+        <div id="errorMessage"></div>
+        <div id="threejsContainer"></div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="test_data.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        window.onload = function() {
+            console.log("頁面已加載完成");
+            console.log("THREE 可用性:", typeof THREE !== 'undefined');
+            console.log("OrbitControls 可用性:", typeof THREE !== 'undefined' && typeof THREE.OrbitControls !== 'undefined');
+        };
+    </script>
+</body>
+</html>

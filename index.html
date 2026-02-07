@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 平面圖分析</title>
+    <!-- 引入外部樣式表 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>3D 平面圖分析與建模</h1>
+        <div class="info-box">
+            <p>請先確保後端服務器正在運行: <code>node start_servers.js</code></p>
+            <p>此頁面可以通過 VS Code Live Server 運行 (端口 5500)</p>
+            <p>您可以將分析結果保存為 JS 文件，以便將來重複使用</p>
+        </div>
+        
+        <!-- 歷史記錄面板 -->
+        <div class="history-panel">
+            <div class="history-title">歷史分析記錄</div>
+            <div class="history-list" id="historyList">
+                <div class="history-item" style="text-align: center; color: #999;">沒有歷史記錄</div>
+            </div>
+            <div style="margin-top: 10px; text-align: right;">
+                <button id="useSelectedButton" disabled onclick="useSelectedFile()">使用選中的數據</button>
+                <button onclick="refreshHistoryList()">刷新列表</button>
+            </div>
+        </div>
+        
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="fileInput" accept="image/*">
+            <div class="button-group">
+                <button type="button" onclick="uploadFile()">分析與建模</button>
+            </div>
+        </form>
+        
+        <div id="loadingMessage">正在加載，請稍候...</div>
+        <div id="errorMessage"></div>
+        <div id="threejsContainer"></div>
+        
+        <!-- AI 指令面板 -->
+        <div class="ai-command-panel">
+            <h3>AI 助手</h3>
+            <p>輸入簡單指令，AI 將幫您調整模型。例如：「將柱子往左移動 1 米」或「把牆壁高度增加 0.5 米」。</p>
+            
+            <div class="command-input-container">
+                <input type="text" id="commandInput" placeholder="輸入您的指令..." />
+                <button id="executeCommand">執行</button>
+            </div>
+            
+            <div class="command-history" id="commandHistory">
+                <div class="command-entry">
+                    <div class="ai-response">歡迎使用 AI 助手，請輸入您的指令。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI分析中提示 -->
+    <div class="analysis-status" id="analysisStatus">
+        <div class="spinner"></div>
+        <p>AI 正在分析平面圖，請耐心等候...</p>
+        <p id="analysisProgress"></p>
+        <p style="font-size: 14px; margin-top: 15px; opacity: 0.7;">
+            (分析結果將自動保存至歷史記錄)
+        </p>
+    </div>
+    
+    <!-- AI調整中提示 -->
+    <div id="ai-loading-indicator">
+        <div class="spinner"></div>
+        <div class="text">AI 調整中...</div>
+    </div>
+    
+    <!-- 加載腳本 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="json_fixer.js"></script>
+    <script src="history.js"></script>
+    <script src="fallback.js"></script>
+    <script src="ai_command.js"></script>
+    <script src="gpt4o_connector.js"></script>
+    <script src="data_validator.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
