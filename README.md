@@ -16,6 +16,10 @@
 
 *上傳 2D 建築平面圖，AI 自動分析房間佈局並生成可互動的 3D 環境。支援中英文自然語言指令即時操控 3D 場景。*
 
+## 📋 Quick Summary
+
+> 🏗️ **AI Floorplan to 3D** 是一套將 2D 建築平面圖自動轉換為可互動 3D 環境的全棧 AI 應用。使用者只需 📤 上傳一張平面圖影像，系統便透過 👁️ GPT-4o Vision API 進行多模態影像分析，自動辨識牆壁、門窗、柱子等建築元素的位置與尺寸，輸出結構化 JSON 數據。前端 🎮 Three.js 引擎即時將這些數據渲染為完整的 3D 建築模型，支援 OrbitControls 旋轉、縮放與平移操作。最大亮點是 🗣️ 中英文雙語自然語言指令系統——使用者可直接輸入「把牆壁高度增加到 3.5 米」等指令，AI 即時理解並修改 3D 場景。資料管線包含自研的 🔧 JSON 修復器與結構化驗證器，確保 AI 輸出穩定可靠。後端為 Node.js + Express，支援 📂 歷史版本追蹤與回溯。從「看圖 👀」到「建模 🏛️」到「語音指揮 🎙️」，實現全 AI 驅動的建築科技流程 🚀。
+
 <br/>
 
 ```
@@ -36,7 +40,7 @@
 
 ---
 
-## Highlights / 技術亮點
+## ⭐ Highlights / 技術亮點
 
 | Domain | Detail |
 |--------|--------|
@@ -49,9 +53,9 @@
 
 ---
 
-## Architecture / 系統架構
+## 🏗️ Architecture / 系統架構
 
-### Core Pipeline / 核心流程
+### ⚙️ Core Pipeline / 核心流程
 
 ```
                          ┌─────────────────────────────────────┐
@@ -93,7 +97,7 @@
                     └──────────────────────────────────────────────┘
 ```
 
-### AI Floorplan Analysis / AI 平面圖解析
+### 👁️ AI Floorplan Analysis / AI 平面圖解析
 
 GPT-4o Vision 接收平面圖影像後，輸出結構化 JSON 描述每個建築元素：
 
@@ -108,7 +112,7 @@ GPT-4o Vision 接收平面圖影像後，輸出結構化 JSON 描述每個建築
 
 所有座標以**公尺為單位**，原點 (0,0,0) 位於場景中心。
 
-### NLP Command System / 自然語言指令系統
+### 🗣️ NLP Command System / 自然語言指令系統
 
 `ai_command.js` (633 lines) 提供完整的中英文自然語言 3D 場景操控：
 
@@ -124,7 +128,7 @@ Modified JSON → Three.js re-renders scene in real time
 
 ---
 
-## Project Structure / 專案結構
+## 📁 Project Structure / 專案結構
 
 ```
 ai-floorplan-to-3d/
@@ -150,7 +154,7 @@ ai-floorplan-to-3d/
 
 ---
 
-## Tech Stack / 技術棧
+## 🛠️ Tech Stack / 技術棧
 
 | Layer | Technology |
 |-------|-----------|
@@ -163,30 +167,30 @@ ai-floorplan-to-3d/
 
 ---
 
-## Key Components / 核心模組詳解
+## 🧩 Key Components / 核心模組詳解
 
-### Express Server (`server.js` -- 474 lines)
+### 🖥️ Express Server (`server.js` -- 474 lines)
 
 - **Image upload** via Multer with automatic directory management
 - **GPT-4o Vision prompt engineering** -- 精心設計的提示詞，引導 AI 輸出精確的建築元素 JSON（含座標、尺寸、類型）
 - **AI command proxy** -- 將前端自然語言指令轉發至 GPT-4o，附帶當前 3D 場景上下文
 - **History persistence** -- 自動保存每次分析結果為 JS 檔案，含時間戳和元數據
 
-### Three.js Renderer (`script.js` -- 1115 lines)
+### 🎮 Three.js Renderer (`script.js` -- 1115 lines)
 
 - 完整的 3D 場景管理：camera, renderer, OrbitControls, lighting setup
 - **Element factory** -- 根據 JSON 類型 (wall/door/window/column/floor) 自動生成對應 3D mesh
 - **Material system** -- 不同建築元素使用不同材質和顏色
 - **Dynamic re-rendering** -- 支援 NLP 指令修改後即時重繪
 
-### NLP Command Engine (`ai_command.js` -- 633 lines)
+### 🗣️ NLP Command Engine (`ai_command.js` -- 633 lines)
 
 - **Bilingual support** -- 中文和英文自然語言指令均可操控場景
 - **Context-aware** -- 將當前場景完整 JSON 作為上下文傳給 GPT-4o
 - **Command history** -- 聊天式介面記錄所有使用者指令和 AI 回應
 - **Error recovery** -- 指令執行失敗時提供明確的錯誤訊息和建議
 
-### Data Validation Pipeline
+### 🔧 Data Validation Pipeline
 
 ```
 AI Raw Output → json_fixer.js (basic + advanced repair) → JSON.parse → data_validator.js (schema check) → Three.js
@@ -199,14 +203,14 @@ AI Raw Output → json_fixer.js (basic + advanced repair) → JSON.parse → dat
 
 ---
 
-## Getting Started / 開始使用
+## 🏁 Getting Started / 開始使用
 
-### Prerequisites / 前置需求
+### 📋 Prerequisites / 前置需求
 
 - Node.js 18+
 - OpenAI API Key (需要 GPT-4o 模型權限)
 
-### Installation & Run / 安裝與執行
+### 📦 Installation & Run / 安裝與執行
 
 ```bash
 # Clone the repository
@@ -227,7 +231,7 @@ npm start
 # http://localhost:3000
 ```
 
-### Usage / 使用方式
+### 💡 Usage / 使用方式
 
 1. **Upload Floorplan** -- 上傳建築平面圖影像（支援 JPG/PNG）
 2. **Wait for Analysis** -- AI 分析平面圖並生成 3D 模型（約 10-30 秒）
@@ -237,7 +241,7 @@ npm start
 
 ---
 
-## Category / 分類
+## 🏷️ Category / 分類
 
 > **AI Automation / AI 自動化**
 >
